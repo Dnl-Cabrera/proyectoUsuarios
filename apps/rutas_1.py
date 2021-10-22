@@ -34,7 +34,8 @@ def usuarioInicio():
     class1="nav-link active"
     class2="nav-link disabled"
     class3="nav-link disabled"
-    mensaje="Bienvenido "+session['usuario']
+    #mensaje="Bienvenido "+session['usuario']
+    mensaje="Bienvenido usuario"
     return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
 
 @app.route('/registrarUsuario')
@@ -47,21 +48,22 @@ def registrarUsuario():
 
 @app.route('/gestorUsuario')
 def gestorUsuario():
-    
-    if(session['permisos']=="adminUser"):
-        class1="nav-link"
-        class2="nav-link active"
-        class3="nav-link"
-        mensaje="Bienvenido "+session["usuario"]
-        return render_template("gestorUsuarios.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
-    else:
+
+    #if(session['permisos']=="adminUser"):
+    class1="nav-link"
+    class2="nav-link active"
+    class3="nav-link"
+    #mensaje="Bienvenido "+session["usuario"]
+    mensaje="Gestor de usuarios"
+    return render_template("gestorUsuarios.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+    '''else:
         class1="nav-link active"
         class2="nav-link disabled"
         class3="nav-link disabled"
         flash("No puede acceder al gestor de usuarios")
         mensaje="Bienvenido "+session["usuario"]
         return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
-
+    '''
 
 @app.route('/validarRegistro/',methods=["POST"])
 def validarRegistro():
