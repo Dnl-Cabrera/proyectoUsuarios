@@ -3,9 +3,9 @@ import sqlite3
 from sqlite3 import Error
 import os
 
-CURR_DIR = os.getcwd() #Obtiene el directorio actual madre
-URL_DB=CURR_DIR+"\proyectoUsuarios\database.db"
-
+#CURR_DIR = os.getcwd() #Obtiene el directorio actual madre
+#URL_DB=CURR_DIR+"\proyectoUsuarios\database.db"
+URL_DB="../database.db"
 
 def get_db():
     try:
