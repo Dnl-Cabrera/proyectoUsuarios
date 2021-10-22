@@ -1,11 +1,13 @@
 import re
 from app import app
-from flask import render_template, flash, request
+from flask.helpers import make_response
+from flask import render_template, flash, request, session
 from flask.wrappers import Request
 from flask import request
 from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona
 from werkzeug.utils import redirect
 from werkzeug.security import generate_password_hash, check_password_hash
+    
 
 @app.route('/')
 def index():
@@ -32,7 +34,7 @@ def usuarioInicio():
     class1="nav-link active"
     class2="nav-link disabled"
     class3="nav-link disabled"
-    mensaje="Bienvenido usuario"
+    mensaje="Bienvenido "+session['usuario']
     return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
 
 @app.route('/registrarUsuario')
@@ -45,11 +47,21 @@ def registrarUsuario():
 
 @app.route('/gestorUsuario')
 def gestorUsuario():
-    class1="nav-link"
-    class2="nav-link active"
-    class3="nav-link"
-    mensaje="Gestor de usuario"
-    return render_template("gestorUsuarios.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+    
+    if(session['permisos']=="adminUser"):
+        class1="nav-link"
+        class2="nav-link active"
+        class3="nav-link"
+        mensaje="Bienvenido "+session["usuario"]
+        return render_template("gestorUsuarios.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+    else:
+        class1="nav-link active"
+        class2="nav-link disabled"
+        class3="nav-link disabled"
+        flash("No puede acceder al gestor de usuarios")
+        mensaje="Bienvenido "+session["usuario"]
+        return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+
 
 @app.route('/validarRegistro/',methods=["POST"])
 def validarRegistro():
@@ -92,12 +104,18 @@ def inicioSesion():
     else:
         passwordDB=userData[0][2]
         if(check_password_hash(passwordDB,password)):
-            permisos=userData[0][3]
-            if(permisos=="usuario"):
+            #permisos=userData[0][3]
+            session.clear()
+            session['id']=userData[0][0]
+            session['usuario']=userData[0][1]
+            session['password']=userData[0][2]
+            session['permisos']=userData[0][3]
+
+            if(session['permisos']=="usuario"):
                 return redirect('/usuarioInicio')
-            elif(permisos=="adminUser"):
+            elif(session['permisos']=="adminUser"):
                 return redirect('/gestorUsuario')
-            elif(permisos=="adminEmplo"):
+            elif(session['permisos']=="adminEmplo"):
                 return "admin empleados"
             else:
                 return "Sin permisos"

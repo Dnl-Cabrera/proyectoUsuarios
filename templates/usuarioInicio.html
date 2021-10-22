@@ -2,6 +2,12 @@
 
 {% block begin %}
 
+    {% for msg in get_flashed_messages() %}
+        <div class="form-group" id="alertas">
+            <label for="exampleInputPassword1">{{ msg }}</label>
+        </div>
+    {% endfor %}
+    
     <h1 style="padding: 10%;">
         PAGINA USUARIO
     </h1>
