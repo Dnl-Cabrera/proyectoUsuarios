@@ -5,7 +5,7 @@ import os
 
 #CURR_DIR = os.getcwd() #Obtiene el directorio actual madre
 #URL_DB=CURR_DIR+"\proyectoUsuarios\database.db"
-URL_DB="../database.db"
+URL_DB="database.db"
 
 def get_db():
     try:
