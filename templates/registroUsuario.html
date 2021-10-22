@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block begin %}
+
+    <div id="registro1" class="container">
+
+        <div id="registro">
+                
+                <center><h1 style="padding: 5%;">Registro de usuario</h1></center>
+
+                {% for msg in get_flashed_messages() %}
+                <div class="form-group" id="alertas">
+                    <label for="exampleInputPassword1">{{ msg }}</label>
+                </div>
+                {% endfor %}
+            
+                <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+                <form action="/validarRegistro/" method="POST" name="sesion_registro">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre completo</label>
+                        <input type="text" class="form-control" placeholder="Enter name" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Identificación</label>
+                        <input type="text" class="form-control" placeholder="Enter ID" name="id">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Sexo</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="genero" id="flexRadioDefault1" value="M">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                              Hombre
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="genero" id="flexRadioDefault2" value="F" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                              Mujer
+                            </label>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Dirección de residencia</label>
+                        <input type="text" class="form-control" name="address" placeholder="Enter address">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Usuario</label>
+                        <input type="text" class="form-control" name="user" placeholder="Enter nameuser">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" class="form-control" name="password" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Permisos</label>
+                        <input type="text" class="form-control" name="permiso" value="usuario" placeholder="Enter password" readonly>
+                    </div>
+                    <div id="btns_registro">
+                        <button type="submit" class="btn btn-primary">Registrar usuario</button>
+                    </div>
+                </form>
+
+                <form action="/" method="GET" name="registrar">
+                    <div id="btns_registro">
+                        <button type="submit" class="btn btn-primary" id="btn_registrar">Regresar</button>
+                    </div>
+                </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+#div_bg_dark{
+    text-align: center !important;
+}
+
+#titlenavbar{
+    color:white !important;
+}
+
+#pills-tab{
+    padding-top: 1% !important;
+}
+
+.container-fluid-navbar{
+    width: 5%;
+}
+
+.container-fluid-menBar{
+    width: 95%;
+    text-align: center !important;
+}
+
+#registro{
+    width: 30% !important;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+#registro1{
+    width: 100% !important;
+}
+
+#btn_registrar{
+    background-color: darkgray;
+    border-color:darkgrey;
+}
+
+#btns_registro{
+    text-align: center;
+    padding: 3%;
+}
+
+/*Estilo de gestorUsuario.html */
+
+#buscarUsuario{
+    width: 40% !important;
+    display: inline-flex !important; /*Esto es para poder ajustarlo horizontal el contenedor junto con otro.*/
+    justify-content: center !important; /*Esto es para ajustar un div dentro de otro, se debe indicar primero el display.*/
+    
+}
+
+#datosUsuario{
+    width: 60% !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    border-left-style: solid;
+}
+
+#btn_eliminar, #eliminar{
+    background-color: rgb(243, 110, 110);
+    border-color: rgb(243, 110, 110);
+}
+
+/*Configurando mensajes alertas flask()*/
+
+#alertas{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5%;
+    font-size: 20px;
+    color:rgb(245, 55, 96);
+
+}

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block begin %}
+
+    <div id="buscarUsuario">
+        <div style="width: 70%;">
+            <center><h1 style="padding: 5%;">Consultar usuario</h1></center>
+            {% for msg in get_flashed_messages() %}
+                <div class="form-group" id="alertas">
+                    <label for="exampleInputPassword1">{{ msg }}</label>
+                </div>
+            {% endfor %}
+            <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+            <form action="/consultarUsuario/" method="POST" name="consultar_cliente">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Usuario</label>
+                    <input type="usuario" class="form-control" name="user" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user">
+                    <small id="emailHelp" class="form-text text-muted">Ingrese el usuario que desea consultar.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">ID</label>
+                    <input type="identificacionUser" class="form-control" name="id" id="exampleInputPassword1" placeholder="Enter ID">
+                    <small id="emailHelp" class="form-text text-muted">Ingrese el ID que desea consultar.</small>
+                </div>
+                <div id="btns_registro">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div><div id="datosUsuario">
+        <div style="width: 70%;">
+            <center><h1 style="padding: 5%;">Datos usuario consultado</h1></center>
+            
+            <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+            <form action="/operacionUsuario/" method="POST" name="sesion_registro">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre completo</label>
+                    <input type="text" class="form-control" name="name" value="{{name}}" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Identificación</label>
+                    <input type="text" class="form-control" name="ide" value="{{ide}}" placeholder="Enter ID">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Sexo</label>
+                    <input type="text" class="form-control" name="gender" value="{{gender}}" placeholder="Enter gender">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Dirección de residencia</label>
+                    <input type="text" class="form-control" name="address" value="{{address}}" placeholder="Enter address">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Usuario</label>
+                    <input type="text" class="form-control" name="user" value="{{user}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Permisos</label>
+                    <select class="form-select" aria-label="Default select example" name="permiso">
+                        {% if permisos=="adminUser" %}
+                            <option value="usuario">usuario</option>
+                            <option value="adminUser" selected>adminUser</option>
+                            <option value="adminEmplo">adminEmplo</option>
+                        {% elif permisos=="adminEmplo" %}
+                            <option value="usuario">usuario</option>
+                            <option value="adminUser">adminUser</option>
+                            <option value="adminEmplo" selected>adminEmplo</option>
+                        {% else %}
+                            <option value="usuario" selected>usuario</option>
+                            <option value="adminUser">adminUser</option>
+                            <option value="adminEmplo">adminEmplo</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña</label>
+                    <input type="password" class="form-control" name="password" value="{{password}}" placeholder="Enter password">
+                </div>
+                <div id="btns_registro">
+                    <button type="submit" class="btn btn-secondary" id="btn_guardar" name="submitButton" value="Actualizar">Actualizar usuario</button>
+                    <button type="button" class="btn btn-primary" id="btn_eliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar usuario</button>
+                </div>
+
+                <!--Modal-->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">¡Alerta!</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ¿Esta seguro que desea realizar este cambio?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                                <button type="submit" class="btn btn-secondary" id="eliminar" name="submitButton" value="Eliminar">Si</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+    
+
+
+
+
+{% endblock %}

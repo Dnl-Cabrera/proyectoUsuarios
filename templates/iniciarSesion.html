@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block begin %}
+
+    <div id="registro1" class="container">
+
+        <div id="registro">
+                
+                <center><h1 style="padding: 5%;">Ingreso</h1></center>
+            
+                {% for msg in get_flashed_messages() %}
+                    <div class="form-group" id="alertas">
+                        <label for="exampleInputPassword1">{{ msg }}</label>
+                    </div>
+                {% endfor %}
+
+                <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+                <form action="/inicioSesion/" method="POST" name="sesion_registro">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Usuario</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="user" placeholder="Enter user"> <!--aria-describedby="emailHelp"-->
+                        <small id="emailHelp" class="form-text text-muted">Nunca compartas tu usuario y contraseña con otras personas.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+                    </div>
+                    <div id="btns_registro">
+                        <button type="submit" class="btn btn-primary" value="iniciando">Aceptar</button>
+                    </div>
+                </form>
+                <form action="registrarUsuario" method="GET" name="registrar">
+                    <div id="btns_registro">
+                        <button type="submit" class="btn btn-secondary" id="btn_registrar" value="registro">Registrar usuario</button>
+                    </div>
+                </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

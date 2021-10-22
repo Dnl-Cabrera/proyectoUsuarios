@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block inicio %}
+
+    <form action="{{url_for('funcionActividad')}}" method="POST" name="actividad">
+        <li class="nav-item" role="presentation" style="display: none !important;">
+            <button name="actividad" value="adminEmplo" class="nav-link" id="pills-adminEmplo-tab" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false">Administrador de empleados</button>
+        </li>
+    </form>
+
+{% endblock %}
+
+{% block adminUser %}
+
+    
+
+{% endblock %}
