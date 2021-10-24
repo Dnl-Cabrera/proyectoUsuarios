@@ -16,7 +16,7 @@ def get_db():
     except :
         print ('error')
 
-def sql_query_registro(id,usuario):
+def sql_query_registro(id=None,usuario=None):
     try:
         strsql = "select * from registro where id='"+id+"' or usuario='"+usuario+"';"# and correo="+correo+";"
         con = get_db()
