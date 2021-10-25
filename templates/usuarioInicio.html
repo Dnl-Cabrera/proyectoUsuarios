@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block begin %}
+    <div class="form-group" style="width: 100%;text-align: right; padding-right: 5%;padding-top: 1%;">
+        <small id="emailHelp" class="form-text text-muted">Permisos: {{permiso}}</small>
+    </div>
 
     {% for msg in get_flashed_messages() %}
         <div class="form-group" id="alertas">

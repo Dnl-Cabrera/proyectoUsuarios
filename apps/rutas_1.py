@@ -1,6 +1,6 @@
 import re
 from app import app
-from flask.helpers import make_response
+from flask.helpers import make_response, url_for
 from flask import render_template, flash, request, session
 from flask.wrappers import Request
 from flask import request
@@ -9,13 +9,24 @@ from werkzeug.utils import redirect
 from werkzeug.security import generate_password_hash, check_password_hash
     
 
+@app.errorhandler(404)
+def page_not_found(e):#Esta función debe recibir el error como parametor, e es el error
+    class1="nav-link active"
+    class2="nav-link disabled"
+    class3="nav-link disabled"
+    mensaje="Error en la busqueda"
+    return render_template("errorCarga.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+
 @app.route('/')
 def index():
+    #session.clear() esta linea elimina las sessiones como los mensajes flash !!
     class1="nav-link active"
     class2="nav-link disabled"
     class3="nav-link disabled"
     mensaje="Inicio Sesión"
+
     return render_template("iniciarSesion.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+
 
 @app.route('/funcionActividad',methods=["POST"])
 def funcionActividad():
@@ -23,6 +34,7 @@ def funcionActividad():
     operacion=request.form["actividad"]
 
     if operacion=="inicioSesion":
+        session.clear()
         return redirect("/")
     elif operacion=="adminUser":
         return redirect("/gestorUsuario")
@@ -31,12 +43,17 @@ def funcionActividad():
 
 @app.route('/usuarioInicio')
 def usuarioInicio():
-    class1="nav-link active"
-    class2="nav-link disabled"
-    class3="nav-link disabled"
-    mensaje="Bienvenido "+session['usuario']
-    #mensaje="Bienvenido usuario"
-    return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+    if session.get('usuario'):
+        class1="nav-link active"
+        class2="nav-link disabled"
+        class3="nav-link disabled"
+        mensaje="Bienvenido "+session['usuario']
+        #mensaje="Bienvenido usuario"
+        return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
+    else:
+        flash('Inicie primero sesión','info')
+        return redirect(url_for('index'))
+        #return render_template("iniciarSesion.html")
 
 @app.route('/registrarUsuario')
 def registrarUsuario():
@@ -49,21 +66,25 @@ def registrarUsuario():
 @app.route('/gestorUsuario')
 def gestorUsuario():
 
-    if(session['permisos']=="adminUser"):
-        class1="nav-link"
-        class2="nav-link active"
-        class3="nav-link"
-        mensaje="Bienvenido "+session["usuario"]
-    #mensaje="Gestor de usuarios"
-        return render_template("gestorUsuarios.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+    if (session.get('usuario')):
+        if(session['permisos']=="adminUser"):
+            class1="nav-link"
+            class2="nav-link active"
+            class3="nav-link"
+            mensaje="Bienvenido "+session["usuario"]
+        #mensaje="Gestor de usuarios"
+            return render_template("gestorUsuarios.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
+        else:
+            class1="nav-link active"
+            class2="nav-link disabled"
+            class3="nav-link disabled"
+            flash("No puede acceder al gestor de usuarios")
+            mensaje="Bienvenido "+session["usuario"]
+            return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
     else:
-        class1="nav-link active"
-        class2="nav-link disabled"
-        class3="nav-link disabled"
-        flash("No puede acceder al gestor de usuarios")
-        mensaje="Bienvenido "+session["usuario"]
-        return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
-    
+        flash('Inicie primero sesión','info')
+        return redirect(url_for('index'))
+
 
 @app.route('/validarRegistro/',methods=["POST"])
 def validarRegistro():
@@ -151,10 +172,10 @@ def consultarUsuario():
             user=consPersona[0][1]
             password=consPersona[0][2]
             permisos=consPersona[0][3]
-            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,ide=ide,name=name,gender=gender,address=address,user=user,password=password,permisos=permisos)
+            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,ide=ide,name=name,gender=gender,address=address,user=user,password=password,permisos=permisos,permiso=session['permisos'])
         else:
             flash("Identificación no encontrado")
-            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3)
+            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
 
     elif(suma_User>0):
         consUser=consUsuario(user)
@@ -167,13 +188,13 @@ def consultarUsuario():
             user=consUser[0][1]
             password=consUser[0][2]
             permisos=consUser[0][3]
-            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,ide=ide,name=name,gender=gender,address=address,user=user,password=password,permisos=permisos)
+            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,ide=ide,name=name,gender=gender,address=address,user=user,password=password,permisos=permisos,permiso=session['permisos'])
         else:
             flash("Usuario no encontrado")
-            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3)
+            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
     else:
         flash("Ingrese los datos correctamente")
-        return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3)
+        return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
 
 
 @app.route('/operacionUsuario/',methods=['POST'])
@@ -202,22 +223,22 @@ def operacionUsuario():
                 updatePersona(name,sexo,address,ide)
                 updateUsuario(password,permiso,ide)
                 flash("Usuario actualizado")
-                return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+                return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
             else:
                 password=generate_password_hash(password)
                 updatePersona(name,sexo,address,ide)
                 updateUsuario(password,permiso,ide)
                 flash("Usuario actualizado")
-                return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+                return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
         else:
                flash("Usuario no consultado")
-               return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+               return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
     elif(request.form['submitButton']=="Eliminar"):
         
         if(suma_Id>0):
             eliminarUsuario(ide)
             eliminarPersona(ide)
             flash("Usuario eliminado")
-            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+            return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
     
     #return str(ide)+name+sexo+address+user+permiso+password #Obteniendo los datos del formulario consultado.
