@@ -5,38 +5,38 @@
 <center><div style="width: 80%">
     <form action="" aria-colspan="2">
 
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <!-- para seleccionar el boton una vez se muestre la pagina debemos agregar en la clase un active -->  
-        <div class="form-group">
-            <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-begin" type="submit" role="tab" aria-controls="pills-begin" aria-selected="true" style="margin: 20px" onmouseover="buttonUp()">Registro Empleado</button>
-            </li>  
-        </div>
-  
-        <div class="form-group">
-            <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminUser" type="submit" role="tab" aria-controls="pills-adminUser" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Editar Empleados</button>
-            </li>
-        </div>
-        <div class="form-group">
-            <li class="nav-item" role="presentation">
-                    <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Visualizar empleado</button>
-            </li>
-        </div>
-    
-        <div class="form-group">
-            <li class="nav-item" role="presentation">
-                    <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Lista de empleados</button>
-            </li>
-        </div>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <!-- para seleccionar el boton una vez se muestre la pagina debemos agregar en la clase un active -->  
+            <div class="form-group">
+                <form action="{{url_for('funcionAdmonEmpleado')}}" method="POST" name="admon">
+                    <li class="nav-item" role="presentation">
+                            <button class="nav-link" name="admon" velue="registroEmpleado" id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-begin" type="submit" role="tab" aria-controls="pills-begin" aria-selected="true" style="margin: 20px" onmouseover="buttonUp()">Registro Empleado</button>
+                    </li>  
+                </form>
+            </div>
+            <div class="form-group">
+                <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminUser" type="submit" role="tab" aria-controls="pills-adminUser" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Editar Empleados</button>
+                </li>
+            </div>
+            <div class="form-group">
+                <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Visualizar empleado</button>
+                </li>
+            </div>
+            <div class="form-group">
+                <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Lista de empleados</button>
+                </li>
+            </div>
+            
+            <div class="form-group">
+                <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Retroalimentación empleados</button>
+                </li>
+            </div>
 
-        <div class="form-group">
-            <li class="nav-item" role="presentation">
-                    <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Retroalimentación empleados</button>
-            </li>
-        </div>
-
-    </ul>
+        </ul>
     </form>
 </div></center>
 

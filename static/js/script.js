@@ -6,11 +6,7 @@ function goRegistro(){
 
 function buttonUp(){
     var adminEmplo = document.getElementById('adminEmplo')
-    console.log(adminEmplo);
+    //console.log(adminEmplo);
 }
 
-function goEmpleado(){
-    return render_template('crearEmpleado.html')
-
-}
 

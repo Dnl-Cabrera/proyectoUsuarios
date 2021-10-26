@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block inicio %}
+
+    <form action="{{url_for('funcionActividad')}}" method="POST" name="actividad">
+        <li class="nav-item" role="presentation">
+            <button name="actividad" value="inicioSesion" class="nav-link " id="pills-inicioSesion-tab" data-bs-toggle="pill" data-bs-target="#pills-begin" type="true" role="tab" aria-controls="pills-begin" aria-selected="false">Iniciar Sesion</button>
+        </li>
+    </form>
+    <form action="{{url_for('funcionActividad')}}" method="POST" name="actividad">
+        <li class="nav-item" role="presentation">
+            <!--El type del boton se elimino para eviatar que el que iniciara sesion lograra cambiar de pestaña.-->
+            <button name="actividad" value="adminUser" class="nav-link" id="pills-adminUser-tab" data-bs-toggle="pill" data-bs-target="#pills-adminUser" disabled="true" role="tab" aria-controls="pills-adminUser" aria-selected="false">Administrador de usuarios</button>
+        </li>
+    </form>
+    <form action="{{url_for('funcionActividad')}}" method="POST" name="actividad">
+        <li class="nav-item" role="presentation">
+            <button name="actividad" value="adminEmplo" class="nav-link active" id="pills-adminEmplo-tab" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" disabled="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="true">Administrador de empleados</button>
+        </li>
+    </form>
+
+{% endblock %}
+
+
+{% block begin %}
+    <style> 
+        table, th, td {
+        border: 1px solid lightgray;
+    }
+    </style>
+    <div id="registro1" class="container">
+
+        <div id="registro">
+               
+         <center><h4 style="padding: 5%;">Listado de Empleados</h4></center>
+            
+            <p for="columna">Listado de empleados registrados activos en la plataforma</p>
+            
+            <table>
+            
+            <form action="" method="POST" name="sesion_registro"></form>
+                
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre completo</th>
+
+                        </tr>
+                        <tr>
+                            <td>1024653458</td>
+                            <td>Linda Rojas</td>
+                           
+                        </tr>
+                        <tr>
+                            <td>80934332 </td>
+                            <td>Jose Hernandez</td>
+                        </tr>
+                        <tr>
+                            <td>1034567890 </td>
+                            <td>Luis Romero</td>
+                          
+                        </tr>
+                    </table>
+
+                </form>
+            </table>
+
+                    <div id="btns_registro">
+                        <button type="submit" class="btn btn-primary" id="btn_registrar" >Regresar</button>
+                        <button type="submit" class="btn btn-primary" id="btn_registrar">Cerrar</button>
+                        <button type="submit" class="btn btn-secondary" style="background-color: blue;" >Exportar</button>
+                    </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

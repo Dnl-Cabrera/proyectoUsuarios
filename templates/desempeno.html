@@ -16,6 +16,7 @@
             <form action="/actualizarDesempeno/" method="POST" name="consultar_cliente">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Usuario</label>
+                    <!--Verificar para ajustar la información si es usuario o si es empleado.-->
                     <input type="usuario" class="form-control" name="user" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user">
                     <small id="emailHelp" class="form-text text-muted">Ingrese el empleado a actualizar Desempeño.</small>
                 </div>
@@ -29,12 +30,12 @@
                 </div>
             </form>
         </div>
-    </div><div id="datosUsuario">
+    </div><div id="">
         <div style="width: 70%;">
             <center><h1 style="padding: 5%;">Desempeño empleado {{id}}</h1></center>
             <br>
             <!-- agregar el nombre y valor para identificar en las funciones.-->
-            <form action="/operacionUsuario/" method="POST" name="sesion_registro">
+            <form action="" method="POST" name="">
               <div class="form-group">
                 <label for="exampleInputEmail1">Nombre completo</label>
                 <input type="text" class="form-control" name="name" value="{{name}}" placeholder="Enter name">
@@ -139,7 +140,9 @@
               </table>
             </form>
             <br>
-            <div id="btns_registro">
+
+            <!--Ajustar id para asignar el estilo-->
+            <div id="">
               <button type="submit" class="btn btn-secondary" id="btn_guardar" name="submitButton" value="Actualizar">Registrar Desempeño</button>
               <button type="button" class="btn btn-primary" id="imprimir" > Imprimir Reporte</button>
           </div>

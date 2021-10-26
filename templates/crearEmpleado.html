@@ -29,13 +29,14 @@
                 </div>
             </form>
         </div>
+                <!--Mantener id-->
     </div><div id="datosUsuario">
 
         <div style="width: 70%;">
             <center><h1 style="padding: 5%;">Datos usuario creado</h1></center>
             
             <!--Debo agregar el nombre y valor para identificar en las funciones.-->
-            <form action="//" method="POST" name="sesion_registro">
+            <form action=" " method="POST" name="sesion_registro">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombre completo</label>
                     <input type="text" class="form-control" name="name" value="{{name}}" placeholder="Enter name">
@@ -74,9 +75,9 @@
                         {% endif %}
                     </select>
                 </div>
-        
-                <div id="btns_registro">
-                    <button type="submit" class="btn btn-secondary" id="btn_guardar" name="submitButton" value="Actualizar">Agregar Información</button>
+                <!--Ajustar id para asignar el estilo-->
+                <div id="">
+                    <button type="submit" class="btn btn-secondary" id="btn_guardar" name="submitButton" value="AgregarInfo">Agregar Información</button>
                     <button type="button" class="btn btn-primary" id="btn_eliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Crear Nuevo </button>
                 </div>
 

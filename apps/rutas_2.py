@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, flash, request, session
-from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona
-
+from db.db import consID,consUsuario,insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona
+from werkzeug.utils import redirect
 
 
 
@@ -12,6 +12,19 @@ def adminEmplo():
     class3="nav-link active"
     mensaje="Gestor de Empleados"
     return render_template("adminEmplo.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
+
+@app.route('/funcionAdmonEmpleado',methods=["POST"])
+def funcionAdmonEmpleado():
+
+    operacion=request.form["admon"]
+
+    if operacion=="registroEmpleado":
+        session.clear()
+        return redirect("/crearEmpleado")
+    elif operacion=="adminUser":
+        return redirect("/desempeno")
+    elif operacion=="adminEmplo":
+        return redirect("/listaEmpleados")
 
 @app.route('/desempeno')
 def desempeno():
@@ -126,33 +139,10 @@ def registroNuevoEmpleado():
     mensaje="Registro de Empleados"
     return render_template("registroNuevoEmpleado.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
 
-@app.route('/validarRegistroEmplo/',methods=["POST"])
-def validarRegistroEmplo():
-    id=request.form['id']
-    name=request.form['nombre']
-    genero=request.form['genero']
-    address=request.form['address']
-    user=request.form['user']
-    password=request.form['password']
-    permisos=request.form['permiso']
-    #return permisos+id+name+genero+address+user+password
-
-    persona=len(consID(id))
-
-    if(persona>0):
-        flash("Cedula ya registrada")
-        return redirect('/registrarUsuario')
-    else:
-        usuario=len(consUsuario(user))
-
-        if(usuario>0):
-            flash("Usuario ya registrada")
-            return redirect('/registrarUsuario')
-        else:
-            password=generate_password_hash(password)
-            insertPersona(id,name,genero,address)
-            insertUsuario(id,user,password,permisos)
-            flash("Usuario registrado")
-            return redirect('/registrarUsuario')
-
-
+@app.route('/listaEmpleados')
+def listaEmpleados():
+    class1="nav-link"
+    class2="nav-link"
+    class3="nav-link active"
+    mensaje="Visualización Empleados Registrados"
+    return render_template("listaEmpleados.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
