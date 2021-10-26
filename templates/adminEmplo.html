@@ -1,17 +1,50 @@
 {% extends 'base.html' %}
 
-{% block inicio %}
+{% block begin %}
 
-    <form action="{{url_for('funcionActividad')}}" method="POST" name="actividad">
-        <li class="nav-item" role="presentation" style="display: none !important;">
-            <button name="actividad" value="adminEmplo" class="nav-link" id="pills-adminEmplo-tab" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false">Administrador de empleados</button>
-        </li>
-    </form>
+<center><div style="width: 80%">
+    <form action="" aria-colspan="2">
 
-{% endblock %}
-
-{% block adminUser %}
-
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <!-- para seleccionar el boton una vez se muestre la pagina debemos agregar en la clase un active -->  
+        <div class="form-group">
+            <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-begin" type="submit" role="tab" aria-controls="pills-begin" aria-selected="true" style="margin: 20px" onmouseover="buttonUp()">Registro Empleado</button>
+            </li>  
+        </div>
+  
+        <div class="form-group">
+            <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminUser" type="submit" role="tab" aria-controls="pills-adminUser" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Editar Empleados</button>
+            </li>
+        </div>
+        <div class="form-group">
+            <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Visualizar empleado</button>
+            </li>
+        </div>
     
+        <div class="form-group">
+            <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Lista de empleados</button>
+            </li>
+        </div>
+
+        <div class="form-group">
+            <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="adminEmplo" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo" aria-selected="false" style="margin: 20px" onmouseover="buttonUp()">Retroalimentación empleados</button>
+            </li>
+        </div>
+
+    </ul>
+    </form>
+</div></center>
+
+            {% for msg in get_flashed_messages() %}
+                <div class="form-group" id="alertas">
+                    <label for="exampleInputPassword1">{{ msg }}</label>
+                </div>
+            {% endfor %}
 
 {% endblock %}
+        

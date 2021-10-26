@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block begin %}
+
+    <div id="buscarUsuario">
+        <div style="width: 90%;">
+            <center><h1 style="padding: 10%;">Crear Empleado a partir de Usuario</h1></center>
+
+            {% for msg in get_flashed_messages() %}
+                <div class="form-group" id="alertas">
+                    <label for="exampleInputPassword1">{{ msg }}</label>
+                </div>
+            {% endfor %}
+
+            <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+            <form action="/EmpleadoUser/" method="POST" name="consultar_cliente">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Usuario</label>
+                    <input type="usuario" class="form-control" name="user" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user">
+                    <small id="emailHelp" class="form-text text-muted">Ingrese el empleado a actualizar Desempeño.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">ID</label>
+                    <input type="identificacionUser" class="form-control" name="id" id="exampleInputPassword1" placeholder="Enter ID">
+                    <small id="emailHelp" class="form-text text-muted">Ingrese el ID que desea consultar.</small>
+                </div>
+                <div id="btns_registro">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div><div id="datosUsuario">
+
+        <div style="width: 70%;">
+            <center><h1 style="padding: 5%;">Datos usuario creado</h1></center>
+            
+            <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+            <form action="//" method="POST" name="sesion_registro">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre completo</label>
+                    <input type="text" class="form-control" name="name" value="{{name}}" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Identificación</label>
+                    <input type="text" class="form-control" name="ide" value="{{ide}}" placeholder="Enter ID">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Sexo</label>
+                    <input type="text" class="form-control" name="gender" value="{{gender}}" placeholder="Enter gender">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Dirección de residencia</label>
+                    <input type="text" class="form-control" name="address" value="{{address}}" placeholder="Enter address">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Usuario</label>
+                    <input type="text" class="form-control" name="user" value="{{user}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Contratos</label>
+                    <select class="form-select" aria-label="Default select example" name="contrato">
+                        {% if contrato=="Termino Fijo" %}
+                            <option value="TerminoFijo" selected>Termino Fijo</option>
+                            <option value="TerminoIndefinido">Termino Indefinido</option>
+                            <option value="ObraLabor">Obra Labor</option>
+                        {% elif contrato=="Termino Indefinido" %}
+                            <option value="TerminoFijo">Termino Fijo</option>
+                            <option value="TerminoIndefinido" selected>Termino Indefinido</option>
+                            <option value="ObraLabor">Obra Labor</option>
+                        {% else %}
+                        <option value="TerminoFijo">Termino Fijo</option>
+                        <option value="TerminoIndefinido">Termino Indefinido</option>
+                        <option value="ObraLabor" selected>Obra Labor</option>
+                        {% endif %}
+                    </select>
+                </div>
+        
+                <div id="btns_registro">
+                    <button type="submit" class="btn btn-secondary" id="btn_guardar" name="submitButton" value="Actualizar">Agregar Información</button>
+                    <button type="button" class="btn btn-primary" id="btn_eliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Crear Nuevo </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+    
+
+
+
+
+{% endblock %}

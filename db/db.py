@@ -156,3 +156,14 @@ def eliminarPersona(id):
         return True
     except Exception:
         return False
+
+def insertDesempeno(id,mes,Efectividad,Innovacion, Inclusion, Puntualidad):
+    try:
+        con1=get_db()
+        cur1=con1.cursor()
+        sqlInsert_desempeno="INSERT INTO desempeno(id,mes,Efectividad,Innovacion, Inclusion, Puntualidad) VALUEs (?, ?, ?, ?, ?,?);"
+        cur1.execute(sqlInsert_desempeno,(id,mes,Efectividad,Innovacion, Inclusion, Puntualidad))
+        con1.commit()
+        con1.close()
+    except Error as err:
+        return err

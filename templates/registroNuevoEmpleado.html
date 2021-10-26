@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block begin %}
+
+    <div id="buscarUsuario" style="width: 80%">
+        <div style="width: 70%;">
+            <center><h1 style="padding: 5%;">Datos Básicos</h1></center>
+            {% for msg in get_flashed_messages() %}
+                <div class="form-group" id="alertas">
+                    <label for="exampleInputPassword1">{{ msg }}</label>
+                </div>
+            {% endfor %}
+            <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+            <form action="/operacionUsuario/" method="POST" name="sesion_registro">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre completo</label>
+                    <input type="text" class="form-control" name="name" value="{{name}}" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Identificación</label>
+                    <input type="text" class="form-control" name="ide" value="{{ide}}" placeholder="Enter ID">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Sexo</label>
+                    <input type="text" class="form-control" name="gender" value="{{gender}}" placeholder="Enter gender">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Dirección de residencia</label>
+                    <input type="text" class="form-control" name="address" value="{{address}}" placeholder="Enter address">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Usuario</label>
+                    <input type="text" class="form-control" name="user" value="{{user}}" placeholder="Enter user">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Foto</label>
+                    <input type="image" class="form-" name="foto" value="{{foto}}" placeholder="Load photo 4x4 ">
+                </div>
+                
+                
+            </form>
+        </div>
+
+    </div><div id="datosUsuario">
+        <div style="width: 70%;">
+            <form action="">
+            <center><h1 style="padding: 5%;">Datos de Contratación</h1></center>
+            
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contratos</label>
+                <select class="form-select" aria-label="Default select example" name="contrato">
+                    {% if contrato=="Termino Fijo" %}
+                        <option value="TerminoFijo" selected>Termino Fijo</option>
+                        <option value="TerminoIndefinido">Termino Indefinido</option>
+                        <option value="ObraLabor">Obra Labor</option>
+                    {% elif contrato=="Termino Indefinido" %}
+                        <option value="TerminoFijo">Termino Fijo</option>
+                        <option value="TerminoIndefinido" selected>Termino Indefinido</option>
+                        <option value="ObraLabor">Obra Labor</option>
+                    {% else %}
+                    <option value="TerminoFijo">Termino Fijo</option>
+                    <option value="TerminoIndefinido">Termino Indefinido</option>
+                    <option value="ObraLabor" selected>Obra Labor</option>
+                    {% endif %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Fecha Incio</label>
+                <input type="date" class="form-control" name="fechaInicio" value="{{fechaInicio}}" placeholder="Enter start date">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Fecha Termino</label>
+                <input type="date" class="form-control" name="fechaTermino" value="{{fechaTermino}}" placeholder="Enter finish date">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Cargo</label>
+                <input type="text" class="form-control" name="cargo" value="{{cargo}}" placeholder="Enter job">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Departamento</label>
+                <input type="text" class="form-control" name="departamento" value="{{departamento}}" placeholder="Enter department">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Salario</label>
+                <input type="number" class="form-control" name="salario" value="{{salario}}" placeholder="Enter salary">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Frecuencia Pago</label>
+                <select class="form-select" aria-label="Default select example" name="frecuencia">
+                    {% if frecuencia=="Mensual" %}
+                        <option value="Mensual" selected>Mensual</option>
+                        <option value="Quincenal">Quincenal</option>
+                    {% else %}
+                        <option value="Mensual">Mensual</option>
+                        <option value="Quincenal" selected>Quincenal</option>
+                    {% endif %}
+                </select>
+            </div>
+
+                
+
+
+            </form>
+        </div>
+
+    </div>
+
+    <div id="btns_registro">
+        <button type="submit" class="btn btn-secondary" id="btn_crearNuevo" name="submitButton" value="crearNuevo">Crear Empleado</button>
+        <button type="button" class="btn btn-primary" id="btn_cancelar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Cancelar</button>
+    </div>
+    
+    
+
+
+
+
+{% endblock %}

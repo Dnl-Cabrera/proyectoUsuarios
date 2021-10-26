@@ -10,6 +10,11 @@
     padding-top: 1% !important;
 }
 
+#adminEmplo{
+    background-color: rgb(207, 207, 207);
+    border-color:rgb(27, 41, 202);
+}
+
 .container-fluid-navbar{
     width: 5%;
 }
@@ -69,4 +74,10 @@
     font-size: 20px;
     color:rgb(245, 55, 96);
 
+}
+
+#btn_imprimir {
+    background-color: rgb(110, 243, 128);
+    border-color: rgb(110, 243, 128);
+    
 }

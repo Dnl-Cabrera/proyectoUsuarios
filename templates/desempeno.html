@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block begin %}
+
+    <div id="buscarUsuario">
+        <div style="width: 90%;">
+            <center><h1 style="padding: 10%;">Consulta Desempeño</h1></center>
+            
+            {% for msg in get_flashed_messages() %}
+                <div class="form-group" id="alertas">
+                    <label for="exampleInputPassword1">{{ msg }}</label>
+                </div>
+            {% endfor %}
+
+            <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+            <form action="/actualizarDesempeno/" method="POST" name="consultar_cliente">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Usuario</label>
+                    <input type="usuario" class="form-control" name="user" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user">
+                    <small id="emailHelp" class="form-text text-muted">Ingrese el empleado a actualizar Desempeño.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">ID</label>
+                    <input type="identificacionUser" class="form-control" name="id" id="exampleInputPassword1" placeholder="Enter ID">
+                    <small id="emailHelp" class="form-text text-muted">Ingrese el ID que desea consultar.</small>
+                </div>
+                <div id="btns_registro">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div><div id="datosUsuario">
+        <div style="width: 70%;">
+            <center><h1 style="padding: 5%;">Desempeño empleado {{id}}</h1></center>
+            <br>
+            <!-- agregar el nombre y valor para identificar en las funciones.-->
+            <form action="/operacionUsuario/" method="POST" name="sesion_registro">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nombre completo</label>
+                <input type="text" class="form-control" name="name" value="{{name}}" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Identificación</label>
+                <input type="text" class="form-control" name="ide" value="{{ide}}" placeholder="Enter ID">
+            </div>
+            <br>
+              <table>
+                <tr id="pdf">
+                  <td colspan="2">
+                    <div class="form-group">
+                    <center><label for="exampleInputEmail1" >Mes Evaluado</label></center>
+                    <center><label type="text" class="form-control">Enero</label></center>
+                    <center><label type="text" class="form-control">Febrero</label></center>
+                    <center><label type="text" class="form-control">Marzo</label></center>
+                    <center><label type="text" class="form-control">Abril</label></center>
+                    <center><label type="text" class="form-control">Mayo</label></center>
+                    <center><label type="text" class="form-control">Junio</label></center>
+                    <center><label type="text" class="form-control">Julio</label></center>
+                    <center><label type="text" class="form-control">Agosto</label></center>
+                    <center><label type="text" class="form-control">Septiembre</label></center>
+                    <center><label type="text" class="form-control">Octubre</label></center>
+                    <center><label type="text" class="form-control">Noviembre</label></center>
+                    <center><label type="text" class="form-control">Diciembre</label></center>
+
+                    </div>
+                  <td colspan="2">
+                    <div class="form-group">
+                      <center><label for="exampleInputEmail1">Inclusión</label></center>
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+
+                    </div>
+                  </td>
+                  <td colspan="2">
+                    <div class="form-group">
+                      <center><label for="exampleInputEmail1">Eficiencia</label></center>
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                    </div>
+                  </td>
+                  <td colspan="2">
+                    <div class="form-group">
+                      <center><label for="exampleInputEmail1">Innovación</label></center>
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                    </div>
+                  </td>
+                  <td colspan="2">
+                    <div class="form-group">
+                      <center><label for="exampleInputEmail1">Puntualidad</label></center>
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                      <input type="text" class="form-control"  placeholder="Enter value">
+                    </div>
+                  </td>
+                </tr>
+        
+                <br>
+
+              </table>
+            </form>
+            <br>
+            <div id="btns_registro">
+              <button type="submit" class="btn btn-secondary" id="btn_guardar" name="submitButton" value="Actualizar">Registrar Desempeño</button>
+              <button type="button" class="btn btn-primary" id="imprimir" > Imprimir Reporte</button>
+          </div>
+        </div>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+        <!-- Below script will print div with id pdf to a pdf file using jspdf -->
+          <script type="text/javascript">
+            $("#imprimir").live("click", function () {
+            var printDoc = new jsPDF();
+            printDoc.fromHTML($('#pdf').get(0), 10, 10, {
+                'width': 180
+            });
+            printDoc.autoPrint();
+            printDoc.output("dataurlnewwindow");
+            // this opens a new popup,  after this the PDF opens the print window view but there are browser inconsistencies with how this is handled
+          });
+          </script>
+
+    </div>
+    
+ 
+
+{% endblock %}

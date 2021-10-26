@@ -27,7 +27,7 @@ def funcionActividad():
     elif operacion=="adminUser":
         return redirect("/gestorUsuario")
     elif operacion=="adminEmplo":
-        return redirect("/")
+        return redirect("/adminEmplo")
 
 @app.route('/usuarioInicio')
 def usuarioInicio():
@@ -118,7 +118,7 @@ def inicioSesion():
             elif(session['permisos']=="adminUser"):
                 return redirect('/gestorUsuario')
             elif(session['permisos']=="adminEmplo"):
-                return "admin empleados"
+                return "/adminEmplo"
             else:
                 return "Sin permisos"
             
