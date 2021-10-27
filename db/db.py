@@ -157,26 +157,26 @@ def eliminarPersona(id):
     except Exception:
         return False
 
-#Revisar a partir de aquí la configuración de la base de datos para el registro
-
-def insertDesempeno(id,mes,Efectividad,Innovacion, Inclusion, Puntualidad):
-    try:
-        con1=get_db()
-        cur1=con1.cursor()
-        sqlInsert_desempeno="INSERT INTO desempeno(id,mes,Efectividad,Innovacion, Inclusion, Puntualidad) VALUEs (?, ?, ?, ?, ?,?);"
-        cur1.execute(sqlInsert_desempeno,(id,mes,Efectividad,Innovacion, Inclusion, Puntualidad))
-        con1.commit()
-        con1.close()
-    except Error as err:
-        return err
-
-def insertEmpleado(id,usuario,nombre,sexo,direccion, contrato,cargo, dependencia,salario,frecuencia, FechaInicio,FechaTermino):
+def consultarAllUsuario():
     try:
         con=get_db()
         cur=con.cursor()
-        sqlInsert_empleados="INSERT INTO usuario(id, usuario, nombre,sexo,direccion, contrato,cargo, dependencia,salario,frecuencia, FechaInicio,FechaTermino) VALUEs (?, ?, ?, ?,?, ?, ?, ?,?, ?, ?, ?);"
-        cur.execute(sqlInsert_empleados,(id,usuario,nombre,sexo,direccion, contrato,cargo, dependencia,salario,frecuencia, FechaInicio,FechaTermino))
-        con.commit()
+        sql="select * from usuario;"
+        cur.execute(sql)
+        user=cur.fetchall()
         con.close()
-    except Error as err:
-        return err
+    except Exception: #Esto se ejecuta solamente cuando sale una excepcion en la busqueda, como cuando no encuentra un dato.
+        return None
+    return user
+
+def consultarAllPersona():
+    try:
+        con=get_db()
+        cur=con.cursor()
+        sql="select * from persona;"
+        cur.execute(sql)
+        user=cur.fetchall()
+        con.close()
+    except Exception: #Esto se ejecuta solamente cuando sale una excepcion en la busqueda, como cuando no encuentra un dato.
+        return None
+    return user

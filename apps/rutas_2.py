@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template, flash, request, session
-from db.db import consID,consUsuario,insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona
+#from db.db import consID,consUsuario,insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona
+from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,consultarAllUsuario,consultarAllPersona
 from werkzeug.utils import redirect
 
 
