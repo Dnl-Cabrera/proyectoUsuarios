@@ -39,7 +39,7 @@ def funcionActividad():
     elif operacion=="adminUser":
         return redirect("/gestorUsuario")
     elif operacion=="allUsers":
-        return redirect("/allUsuarios/")
+        return redirect("/allUsuarios")
     else:
         return redirect(404)
 
@@ -245,7 +245,7 @@ def operacionUsuario():
     
     #return str(ide)+name+sexo+address+user+permiso+password #Obteniendo los datos del formulario consultado.
 
-@app.route('/allUsuarios/')
+@app.route('/allUsuarios')
 def allUsuarios():
 
     if (session.get('usuario')):
@@ -256,7 +256,6 @@ def allUsuarios():
             mensaje="Consultar todos los usuarios"
             users=consultarAllUsuario()
             personas=consultarAllPersona()
-
             datos=[]
             for i in range(len(users)):
                 datos.append((personas[i][0],personas[i][1],users[i][1],users[0][3],personas[i][2],personas[i][3],))
