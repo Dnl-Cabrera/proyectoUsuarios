@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block begin %}
+
+    <div id="allUsuarios">
+        <div style="width: 50%;">
+            <div class="form-group">
+                <small id="emailHelp" class="form-text text-muted">Permisos: {{permiso}}</small>
+            </div>
+            <center><h1 style="padding: 1%;">Consultar todos los usuarios</h1></center>
+            {% for msg in get_flashed_messages() %}
+                <div class="form-group" id="alertas">
+                    <label for="exampleInputPassword1">{{ msg }}</label>
+                </div>
+            {% endfor %}
+            <!--Debo agregar el nombre y valor para identificar en las funciones.-->
+
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Permisos</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">Dirección</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    {% for i in range(data| length) %}
+                        <tr>
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{data[i][0]}}</td>
+                            <td>{{data[i][1]}}</td>
+                            <td>{{data[i][2]}}</td>
+                            <td>{{data[i][3]}}</td>
+                            <td>{{data[i][4]}}</td>
+                            <td>{{data[i]   [5]}}</td>
+                        </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+
+        </div>
+    
+    </div>
+    
+    
+
+
+
+
+{% endblock %}

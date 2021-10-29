@@ -2,9 +2,14 @@ import re
 from sqlite3.dbapi2 import SQLITE_CREATE_VIEW
 from app import app
 from flask import render_template, flash, request, session
+<<<<<<< HEAD
 from flask.helpers import make_response, url_for
 from flask import request
 from db.db import consID,consUsuario,insertPersona, insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,insertUsuario,consIdEmplo
+=======
+#from db.db import consID,consUsuario,insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona
+from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,consultarAllUsuario,consultarAllPersona
+>>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
 from werkzeug.utils import redirect
 import sqlite3
 from sqlite3 import Error

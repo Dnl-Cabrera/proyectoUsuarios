@@ -16,6 +16,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script src="{{url_for('static',filename='js/script.js')}}"></script>
+
+    <!--Agregando libreria para tablas0-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Document</title>
     
     <!--
@@ -51,7 +54,7 @@ Librerias para funcionar el modal pero no funciona el dropdown
                 </form>
                 <form action="{{url_for('funcionActividad')}}" method="POST" name="actividad">
                     <li class="nav-item" role="presentation">
-                        <button name="actividad" value="adminEmplo" class={{class3}} id="pills-adminEmplo-tab" data-bs-toggle="pill" data-bs-target="#pills-adminEmplo" type="submit" role="tab" aria-controls="pills-adminEmplo">Administrador de empleados</button>
+                        <button name="actividad" value="allUsers" class={{class3}} id="pills-allUsers-tab" data-bs-toggle="pill" data-bs-target="#pills-allUsers" type="submit" role="tab" aria-controls="pills-allUsers">Consultar usuarios</button>
                     </li>
                 </form>
                 
@@ -84,8 +87,8 @@ Librerias para funcionar el modal pero no funciona el dropdown
             {% block adminUser %}{% endblock %}
         </div>
         <!-- para seleccionar o mostrar contenido una vez se muestre la pagina debemos agregar en la clase un show active -->
-        <div class="tab-pane fade" id="pills-adminEmplo" role="tabpanel" aria-labelledby="pills-adminEmplo-tab">
-            {% block adminEmplo %}{% endblock %}
+        <div class="tab-pane fade" id="pills-allUsers" role="tabpanel" aria-labelledby="pills-allUsers-tab">
+            {% block allUsers %}{% endblock %}
         </div>
     </div>
     

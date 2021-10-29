@@ -4,10 +4,14 @@ from flask.helpers import make_response, url_for
 from flask import render_template, flash, request, session
 from flask.wrappers import Request
 from flask import request
+<<<<<<< HEAD
 from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,insertEmpleado
+=======
+from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,consultarAllUsuario,consultarAllPersona
+>>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
 from werkzeug.utils import redirect
 from werkzeug.security import generate_password_hash, check_password_hash
-    
+
 
 @app.errorhandler(404)
 def page_not_found(e):#Esta función debe recibir el error como parametor, e es el error
@@ -38,8 +42,10 @@ def funcionActividad():
         return redirect("/")
     elif operacion=="adminUser":
         return redirect("/gestorUsuario")
-    elif operacion=="adminEmplo":
-        return redirect("/adminEmplo")
+    elif operacion=="allUsers":
+        return redirect("/allUsuarios/")
+    else:
+        return redirect(404)
 
 
 @app.route('/usuarioInicio')
@@ -140,7 +146,7 @@ def inicioSesion():
             elif(session['permisos']=="adminUser"):
                 return redirect('/gestorUsuario')
             elif(session['permisos']=="adminEmplo"):
-                return "/adminEmplo"
+                return "admin empleados"
             else:
                 return "Sin permisos"
             
@@ -242,6 +248,7 @@ def operacionUsuario():
             flash("Usuario eliminado")
             return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
     
+<<<<<<< HEAD
     
 
         
@@ -260,3 +267,34 @@ def funcionEmpleado():
         return redirect(url_for("desempeno"))
     elif operacion=="ListaEmpleados":
         return redirect(url_for("/listaEmpleados"))'''
+=======
+    #return str(ide)+name+sexo+address+user+permiso+password #Obteniendo los datos del formulario consultado.
+
+@app.route('/allUsuarios/')
+def allUsuarios():
+
+    if (session.get('usuario')):
+        if(session['permisos']=="adminUser"):
+            class1="nav-link"
+            class2="nav-link"
+            class3="nav-link active"
+            mensaje="Consultar todos los usuarios"
+            users=consultarAllUsuario()
+            personas=consultarAllPersona()
+
+            datos=[]
+            for i in range(len(users)):
+                datos.append((personas[i][0],personas[i][1],users[i][1],users[0][3],personas[i][2],personas[i][3],))
+
+            return render_template("allUsuarios.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje,data=datos,permiso=session['permisos'])
+        else:
+            class1="nav-link active"
+            class2="nav-link disabled"
+            class3="nav-link disabled"
+            flash("No puede acceder a la consulta de los usuarios")
+            mensaje="Bienvenido "+session["usuario"]
+            return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
+    else:
+        flash('Inicie primero sesión','info')
+        return redirect(url_for('index'))
+>>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
