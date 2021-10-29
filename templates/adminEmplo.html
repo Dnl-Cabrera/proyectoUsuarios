@@ -15,20 +15,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-    <!--Agregando libreri para modal-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script src="{{url_for('static',filename='js/script.js')}}"></script>
+   
     
 </head>
 
 <center><div style="width: 80%">
     <form aria-colspan="2" >
-
+        <!--hay un error en este primer form , cuando lo elimino falla el primer link-->
+        <form action="{{url_for('funcionEmpleado')}}" method="POST" name="admon">
+                <h2 name="admon" value="registroEmpleado"  id="pills-inicioSesion-tab" data-bs-toggle="pill" data-bs-target="#pills-begin" role="tab" aria-controls="pills-begin" style="margin: 20px">Funciones del Modulo</h2>
+        </form>
+        
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             
             <!-- Verificar funcionamiento de funcionActividad  y por qué difiere de la funcionEmpleado-->
-            
+
             <form action="{{url_for('funcionEmpleado')}}" method="POST" name="admon">
                 <li class="nav-item" role="presentation">
                     <button name="admon" value="registroEmpleado" class="{{class1}}" id="pills-inicioSesion-tab" data-bs-toggle="pill" data-bs-target="#pills-begin" type="submit" role="tab" aria-controls="pills-begin" style="margin: 20px">Registro Empleado</button>

@@ -36,11 +36,11 @@
             <tbody>
                 <tr>
                 <td>{{row["id"]}}</td>
-                <td>{{row["user"]}}</td>
-                <td>{{row["name"]}}</td>
-                <td>{{row["gender"]}}</td>
-                <td>{{row["address"]}}</td>
-                <td>{{row["contract"]}}</td>
+                <td>{{row["usuario"]}}</td>
+                <td>{{row["nombre"]}}</td>
+                <td>{{row["genero"]}}</td>
+                <td>{{row["direccion"]}}</td>
+                <td>{{row["Contrato"]}}</td>
                 <td>{{row["fechaInicio"]}}</td>
                 <td>{{row["fechaTermino"]}}</td>
                 <td>{{row["cargo"]}}</td>
@@ -51,16 +51,23 @@
             </tbody>
         {% endfor %}
         </table>
-        <a href = "/">Go back to home page</a>
+        
     </div>
     
     <!--</html>-->
-    <div>
-        <div id="btns_registro">
-            <button type="submit" class="btn btn-primary" id="btn_regresar" >Regresar</button>
-            <button type="submit" class="btn btn-primary" id="btn_eliminar">Cerrar</button>
-            <button type="submit" class="btn btn-primary" id="btn_imprimir">Exportar</button>
-        </div>
-    </div>
+    <center colspan="2"><div>
+            <form action="/consultaEmpleados">
+                <button type="submit" class="btn btn-primary" id="btn_regresar">Consultar</button>
+            </form>
+            <button type="submit" class="btn btn-primary" id="btn_imprimir" >
+                <a href = "/adminEmplo">Regresar</a>
+            </button>
+            <form action="/">
+                <button type="submit" class="btn btn-primary" id="btn_eliminar">Cerrar</button>
+            </form>
+            <form>
+                <button type="submit" class="btn btn-primary" id="btn_regresar">Exportar</button>
+            </form>
+    </div></center>
 
 {% endblock %}

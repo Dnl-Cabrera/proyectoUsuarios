@@ -4,7 +4,5 @@ function goRegistro(){
     location.href="../../templates/registroUsuario.html";
 }
 
-function goRegistroEmpleado(){
-    location.href="../../templates/crearEmpleado.html";
-}
+
 

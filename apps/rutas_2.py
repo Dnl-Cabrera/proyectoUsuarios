@@ -1,12 +1,13 @@
 import re
+from sqlite3.dbapi2 import SQLITE_CREATE_VIEW
 from app import app
 from flask import render_template, flash, request, session
 from flask.helpers import make_response, url_for
 from flask import request
 from db.db import consID,consUsuario,insertPersona, insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,insertUsuario,consIdEmplo
 from werkzeug.utils import redirect
-'''import sqlite3
-from sqlite3 import Error'''
+import sqlite3
+from sqlite3 import Error
 
 
 @app.route('/adminEmplo')
@@ -33,6 +34,7 @@ def funcionEmpleado():
         return redirect(url_for("desempeno"))
     elif operacion=="listaEmpleados":
         return redirect(url_for("listaEmpleados"))
+    
 
 @app.route('/desempeno')
 def desempeno():
@@ -168,13 +170,13 @@ def validarRegistroEmpleado():
     name=request.form['name']
     gender=request.form['gender']
     address=request.form['address']
-    contract=request.form['contrato']
-    fechaInicio=request.form['fechaInicio']
-    fechaTermino=request.form['fechaTermino']
     cargo=request.form['cargo']
     departamento=request.form['departamento']
     salario=request.form['salario']
     frecuencia=request.form['frecuencia']
+    contract=request.form['contrato']
+    fechaInicio=request.form['fechaInicio']
+    fechaTermino=request.form['fechaTermino']
     password=request.form['password']
     permisos=request.form['permiso']
 
@@ -197,18 +199,20 @@ def validarRegistroEmpleado():
             #return str(id)+user+name+gender+address+cargo+departamento+salario+frecuencia+contract+fechaInicio+fechaTermino
             return redirect('/registroNuevoEmpleado')
 
-'''@app.route('/listaEmpleados')
-def listaEmpleados():
+@app.route('/consultaEmpleados')
+def consultaEmpleados():
+    
     try:
         con=sqlite3.connect("database.db")
         con.row_factory = sqlite3.Row
         cur=con.cursor()
-        cur.execute('SELECT * FROM empleados ORDER BY id')
+        cur.execute('SELECT * FROM empleados ORDER by usuario')
     #MOSTRAMOS TABLA
         rows = cur.fetchall()
-        return render_template("listaEmpleados.html")
+        
+        return render_template("listaEmpleados.html", rows=rows)
     except Error as err:
-        return err'''
+        return err
 
 
     

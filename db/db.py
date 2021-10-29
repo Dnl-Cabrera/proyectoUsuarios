@@ -2,9 +2,6 @@ from os import error
 import sqlite3
 from sqlite3 import Error
 import os
-from flask import render_template
-
-from entorno.proyectoUsuarios.apps.rutas_2 import listaEmpleados
 
 #CURR_DIR = os.getcwd() #Obtiene el directorio actual madre
 #URL_DB=CURR_DIR+"\proyectoUsuarios\database.db"
@@ -162,12 +159,12 @@ def eliminarPersona(id):
 
 #Revisar a partir de aquí la configuración de la base de datos para el registro y gestion de Empleados
 
-def insertEmpleado(id,usuario,nombre,genero,direccion, contrato,cargo, dependencia,salario,frecuencia, FechaInicio,FechaTermino,password,permisos):
+def insertEmpleado(id,usuario,nombre,genero,direccion,cargo, departamento,frecuencia, salario,contrato, FechaInicio,FechaTermino,password,permisos):
     try:
         con1=get_db()
         cur1=con1.cursor()
-        sqlInsert_empleados="INSERT INTO empleados(id, usuario, nombre,genero,direccion, contrato,cargo, dependencia,salario,frecuencia, FechaInicio,FechaTermino,password,permisos) VALUEs (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
-        cur1.execute(sqlInsert_empleados,(id,usuario,nombre,genero,direccion, contrato,cargo, dependencia,salario,frecuencia, FechaInicio,FechaTermino,password,permisos))
+        sqlInsert_empleados="INSERT INTO empleados(id,usuario,nombre,genero,direccion,cargo, departamento,frecuencia, salario,contrato, FechaInicio,FechaTermino,password,permisos) VALUEs (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+        cur1.execute(sqlInsert_empleados,(id,usuario,nombre,genero,direccion,cargo, departamento,frecuencia, salario,contrato, FechaInicio,FechaTermino,password,permisos))
         con1.commit()
         con1.close()
     except Error as err:
