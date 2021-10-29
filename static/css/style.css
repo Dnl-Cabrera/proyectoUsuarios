@@ -11,6 +11,8 @@
 }
 
 #adminEmplo{
+
+    margin: auto;
     background-color: rgb(207, 207, 207);
     border-color:rgb(27, 41, 202);
 }
@@ -65,6 +67,12 @@
     border-color: rgb(243, 110, 110);
 }
 
+#datosEmpleado{
+    width: 60% !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    border-left-style: solid;
+}
 /*Configurando mensajes alertas flask()*/
 
 #alertas{
@@ -77,7 +85,20 @@
 }
 
 #btn_imprimir {
-    background-color: rgb(110, 243, 128);
-    border-color: rgb(110, 243, 128);
+    background-color: rgb(36, 168, 69);
+    border-color: rgb(36, 168, 69);
+    
+}
+
+#btn_regresar {
+    background-color: rgb(243, 241, 110);
+    border-color: rgb(243, 241, 110);
+    
+}
+
+
+#btn_exportar{
+    background-color: rgb(0, 0, 255);
+    border-color: rgb(0, 0, 255);
     
 }

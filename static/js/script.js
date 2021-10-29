@@ -4,9 +4,7 @@ function goRegistro(){
     location.href="../../templates/registroUsuario.html";
 }
 
-function buttonUp(){
-    var adminEmplo = document.getElementById('adminEmplo')
-    //console.log(adminEmplo);
+function goRegistroEmpleado(){
+    location.href="../../templates/crearEmpleado.html";
 }
-
 

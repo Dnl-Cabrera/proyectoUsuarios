@@ -11,18 +11,27 @@
                 </div>
             {% endfor %}
             <!--Debo agregar el nombre y valor para identificar en las funciones.-->
-            <form action="/operacionUsuario/" method="POST" name="sesion_registro">
+        <form action="/validarRegistroEmpleado/" method="POST" >
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombre completo</label>
                     <input type="text" class="form-control" name="name" value="{{name}}" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Identificación</label>
-                    <input type="text" class="form-control" name="ide" value="{{ide}}" placeholder="Enter ID">
+                    <input type="text" class="form-control" name="id" value="{{ide}}" placeholder="Enter ID">
                 </div>
+                
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Sexo</label>
-                    <input type="text" class="form-control" name="gender" value="{{gender}}" placeholder="Enter gender">
+                    <label for="exampleInputPassword1">Genero</label>
+                    <select class="form-select" aria-label="Default select example" name="gender" value="{{gender}}">
+                        {% if frecuencia=="F" %}
+                            <option value="F" selected>M</option>
+                            <option value="M">M</option>
+                        {% else %}
+                            <option value="F" >F</option>
+                            <option value="M" selected>M</option>
+                        {% endif %}
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Dirección de residencia</label>
@@ -36,14 +45,12 @@
                     <label for="exampleInputPassword1">Foto</label>
                     <input type="image" class="form-" name="foto" value="{{foto}}" placeholder="Load photo 4x4 ">
                 </div>
-                
-                
-            </form>
+                    
         </div>
 
     </div><div id="datosUsuario">
         <div style="width: 70%;">
-            <form action="">
+            
             <center><h1 style="padding: 5%;">Datos de Contratación</h1></center>
             
             <div class="form-group">
@@ -98,18 +105,27 @@
                 </select>
             </div>
 
-                
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Permisos</label>
+                <input type="text" class="form-control" name="permiso" value="usuario" placeholder="Enter password" readonly>
+            </div>
 
+            <div id="btns_registro">
+                <button type="submit" class="btn btn-primary" name="submitButton">Crear Empleado</button>
+                <button type="button" class="btn btn-primary" id="btn_cancelar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Cancelar</button>
+            </div>
 
-            </form>
+        </form>
+            
         </div>
 
     </div>
 
-    <div id="btns_registro">
-        <button type="submit" class="btn btn-secondary" id="btn_crearNuevo" name="submitButton" value="crearNuevo">Crear Empleado</button>
-        <button type="button" class="btn btn-primary" id="btn_cancelar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Cancelar</button>
-    </div>
+
     
     
 

@@ -30,7 +30,7 @@
                 </div>
             </form>
         </div>
-    </div><div id="">
+    </div><div id="datosEmpleado">
         <div style="width: 70%;">
             <center><h1 style="padding: 5%;">Desempeño empleado {{id}}</h1></center>
             <br>
@@ -140,9 +140,7 @@
               </table>
             </form>
             <br>
-
-            <!--Ajustar id para asignar el estilo-->
-            <div id="">
+            <div id="btns_registro">
               <button type="submit" class="btn btn-secondary" id="btn_guardar" name="submitButton" value="Actualizar">Registrar Desempeño</button>
               <button type="button" class="btn btn-primary" id="imprimir" > Imprimir Reporte</button>
           </div>
@@ -150,6 +148,7 @@
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+        
         <!-- Below script will print div with id pdf to a pdf file using jspdf -->
           <script type="text/javascript">
             $("#imprimir").live("click", function () {
@@ -165,6 +164,5 @@
 
     </div>
     
- 
 
 {% endblock %}
