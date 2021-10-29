@@ -4,7 +4,11 @@ from flask.helpers import make_response, url_for
 from flask import render_template, flash, request, session
 from flask.wrappers import Request
 from flask import request
+<<<<<<< HEAD
+from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,insertEmpleado
+=======
 from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,consultarAllUsuario,consultarAllPersona
+>>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
 from werkzeug.utils import redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -12,8 +16,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 @app.errorhandler(404)
 def page_not_found(e):#Esta función debe recibir el error como parametor, e es el error
     class1="nav-link active"
-    class2="nav-link disabled"
-    class3="nav-link disabled"
+    class2="nav-link "
+    class3="nav-link "
     mensaje="Error en la busqueda"
     return render_template("errorCarga.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
 
@@ -21,8 +25,8 @@ def page_not_found(e):#Esta función debe recibir el error como parametor, e es 
 def index():
     #session.clear() esta linea elimina las sessiones como los mensajes flash !!
     class1="nav-link active"
-    class2="nav-link disabled"
-    class3="nav-link disabled"
+    class2="nav-link "
+    class3="nav-link "
     mensaje="Inicio Sesión"
 
     return render_template("iniciarSesion.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
@@ -43,12 +47,13 @@ def funcionActividad():
     else:
         return redirect(404)
 
+
 @app.route('/usuarioInicio')
 def usuarioInicio():
     if session.get('usuario'):
         class1="nav-link active"
-        class2="nav-link disabled"
-        class3="nav-link disabled"
+        class2="nav-link "
+        class3="nav-link "
         mensaje="Bienvenido "+session['usuario']
         #mensaje="Bienvenido usuario"
         return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
@@ -60,8 +65,8 @@ def usuarioInicio():
 @app.route('/registrarUsuario')
 def registrarUsuario():
     class1="nav-link active"
-    class2="nav-link disabled"
-    class3="nav-link disabled"
+    class2="nav-link "
+    class3="nav-link "
     mensaje="Registro de Usuario"
     return render_template("registroUsuario.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
 
@@ -78,8 +83,8 @@ def gestorUsuario():
             return render_template("gestorUsuarios.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
         else:
             class1="nav-link active"
-            class2="nav-link disabled"
-            class3="nav-link disabled"
+            class2="nav-link "
+            class3="nav-link "
             flash("No puede acceder al gestor de usuarios")
             mensaje="Bienvenido "+session["usuario"]
             return render_template("usuarioInicio.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
@@ -243,6 +248,26 @@ def operacionUsuario():
             flash("Usuario eliminado")
             return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
     
+<<<<<<< HEAD
+    
+
+        
+    #return str(ide)+name+sexo+address+user+permiso+password #Obteniendo los datos del formulario consultado.
+    
+
+'''@app.route('/funcionEmpleado',methods=['POST', 'GET'])
+def funcionEmpleado():
+
+    operacion=request.form["admon"]
+
+    if operacion == 'registroEmpleado':
+        #redirect(url_for --> Revisar como se utiliza?
+        return render_template("crearEmpleado.html")
+    elif operacion=="desempeno":
+        return redirect(url_for("desempeno"))
+    elif operacion=="ListaEmpleados":
+        return redirect(url_for("/listaEmpleados"))'''
+=======
     #return str(ide)+name+sexo+address+user+permiso+password #Obteniendo los datos del formulario consultado.
 
 @app.route('/allUsuarios')
@@ -271,3 +296,4 @@ def allUsuarios():
     else:
         flash('Inicie primero sesión','info')
         return redirect(url_for('index'))
+>>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f

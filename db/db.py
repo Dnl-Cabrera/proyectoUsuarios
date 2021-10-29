@@ -157,6 +157,49 @@ def eliminarPersona(id):
     except Exception:
         return False
 
+<<<<<<< HEAD
+#Revisar a partir de aquí la configuración de la base de datos para el registro y gestion de Empleados
+
+def insertEmpleado(id,usuario,nombre,genero,direccion,cargo, departamento,frecuencia, salario,contrato, FechaInicio,FechaTermino,password,permisos):
+    try:
+        con1=get_db()
+        cur1=con1.cursor()
+        sqlInsert_empleados="INSERT INTO empleados(id,usuario,nombre,genero,direccion,cargo, departamento,frecuencia, salario,contrato, FechaInicio,FechaTermino,password,permisos) VALUEs (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+        cur1.execute(sqlInsert_empleados,(id,usuario,nombre,genero,direccion,cargo, departamento,frecuencia, salario,contrato, FechaInicio,FechaTermino,password,permisos))
+        con1.commit()
+        con1.close()
+    except Error as err:
+        return err
+
+
+def consIdEmplo(id):
+    try:
+        con1=get_db()
+        cur=con1.cursor()
+        sql_consulta_empleados="select * from empleados where id=?;"
+        res_empleado=cur.execute(sql_consulta_empleados,(int(id),)) 
+        empleados = cur.fetchall()
+        con1.close()
+        return empleados
+    except Error as err:
+        return err
+
+#No permite la visualización del empleado por  usuario. Debe buscarlo de la tabla empleados 
+def consUsuarioEmplo(usuario):
+    try:
+        con=get_db()
+        cur=con.cursor()
+        sql_consulta_empleados="select * from empleados where usuario=?"
+        res_usuario = cur.execute(sql_consulta_empleados,(usuario,))
+        user=cur.fetchall()
+        con.close()
+        return user
+    except Error as err:
+        return err
+
+
+
+=======
 def consultarAllUsuario():
     try:
         con=get_db()
@@ -180,3 +223,4 @@ def consultarAllPersona():
     except Exception: #Esto se ejecuta solamente cuando sale una excepcion en la busqueda, como cuando no encuentra un dato.
         return None
     return user
+>>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
