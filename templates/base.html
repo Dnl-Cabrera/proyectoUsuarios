@@ -57,6 +57,11 @@ Librerias para funcionar el modal pero no funciona el dropdown
                         <button name="actividad" value="allUsers" class={{class3}} id="pills-allUsers-tab" data-bs-toggle="pill" data-bs-target="#pills-allUsers" type="submit" role="tab" aria-controls="pills-allUsers">Consultar usuarios</button>
                     </li>
                 </form>
+                <form action="{{url_for('funcionActividad')}}" method="POST" name="actividad">
+                    <li class="nav-item" role="presentation">
+                        <button name="actividad" value="adminEmplo" class={{class3}} id="pills-allUsers-tab" data-bs-toggle="pill" data-bs-target="#pills-allUsers" type="submit" role="tab" aria-controls="pills-allUsers">Gestión Empleados</button>
+                    </li>
+                </form>
                 
             </ul>
             

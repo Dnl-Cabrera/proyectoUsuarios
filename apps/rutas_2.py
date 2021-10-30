@@ -2,14 +2,9 @@ import re
 from sqlite3.dbapi2 import SQLITE_CREATE_VIEW
 from app import app
 from flask import render_template, flash, request, session
-<<<<<<< HEAD
 from flask.helpers import make_response, url_for
 from flask import request
-from db.db import consID,consUsuario,insertPersona, insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,insertUsuario,consIdEmplo
-=======
-#from db.db import consID,consUsuario,insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona
-from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,consultarAllUsuario,consultarAllPersona
->>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
+from db.db import consID,consUsuario,insertPersona, insertEmpleado,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,insertUsuario,consIdEmplo,consUsuarioEmplo
 from werkzeug.utils import redirect
 import sqlite3
 from sqlite3 import Error
@@ -20,7 +15,7 @@ def adminEmplo():
     class1="nav-link"
     class2="nav-link"
     class3="nav-link active"
-    mensaje="Gestor de Empleados"
+    mensaje="Gestión de Empleados"
     return render_template("adminEmplo.html",class1=class1,class2=class2,class3=class3,mensaje=mensaje)
 
 @app.route('/funcionEmpleado',methods=['POST'])
@@ -85,11 +80,13 @@ def actualizarDesempeno():
             flash("Identificación no encontrada")
             return render_template('desempeno.html',class1=class1,class2=class2,class3=class3)
 
-    #Revisar error en busqueda por limmite de lista, cuál está llamando?
+    #Revisar error en busqueda por limite de lista, cuál está llamando?
     elif(suma_User>0):
-        consUser=consID(user)
+        consUser=consUsuarioEmplo(user)
+        #print('*********************************************',consUser)
         if(len(consUser)>0):
-            consPersona=consID(consUser[0][0])
+            consPersona=consUsuarioEmplo(consUser[0][1])
+            print('*********************************************',consUser[0][1])
             ide=str(consPersona[0][0])
             name=consPersona[0][1]
             user=consUser[0][1]

@@ -6,7 +6,9 @@ import time
 
 CURR_DIR = os.getcwd() #Obtiene el directorio actual madre
 
-URL_DB=CURR_DIR+"\proyectoUsuarios\database.db"
+#URL_DB=CURR_DIR+"/proyectoUsuarios/database.db"
+URL_DB="proyectoUsuarios/database.db"
+print('direccion')
 print(URL_DB)
 
 def get_db():
@@ -70,6 +72,7 @@ def consUsuario(usuario):
     user=cur.fetchall()
     return len(user)
 '''
+'''
 def updatePersona(nombre,sexo,direccion,id):
     try:
         con=get_db()
@@ -106,7 +109,7 @@ permisos="adminUser"
 
 updatePersona(nombre,sexo,direccion,id)
 updateUsuario(password,permisos,id)
-
+'''
 
 
 
@@ -145,3 +148,14 @@ cur=con.cursor()
 cur.execute(sqlInsert_usuario,(id,usuario,password,permisos))
 con.commit()
 '''
+
+
+    
+con=get_db()
+cur=con.cursor()
+sql_consulta_empleados="select * from empleados where usuario=?"
+res_usuario = cur.execute(sql_consulta_empleados,('CCanto3',))
+user=cur.fetchall()
+con.close()
+print(user)
+

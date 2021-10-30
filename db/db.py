@@ -6,6 +6,7 @@ import os
 #CURR_DIR = os.getcwd() #Obtiene el directorio actual madre
 #URL_DB=CURR_DIR+"\proyectoUsuarios\database.db"
 URL_DB="database.db"
+#URL_DB="proyectoUsuarios/database.db"
 
 def get_db():
     try:
@@ -156,8 +157,7 @@ def eliminarPersona(id):
         return True
     except Exception:
         return False
-
-<<<<<<< HEAD
+        
 #Revisar a partir de aquí la configuración de la base de datos para el registro y gestion de Empleados
 
 def insertEmpleado(id,usuario,nombre,genero,direccion,cargo, departamento,frecuencia, salario,contrato, FechaInicio,FechaTermino,password,permisos):
@@ -199,7 +199,6 @@ def consUsuarioEmplo(usuario):
 
 
 
-=======
 def consultarAllUsuario():
     try:
         con=get_db()
@@ -223,4 +222,3 @@ def consultarAllPersona():
     except Exception: #Esto se ejecuta solamente cuando sale una excepcion en la busqueda, como cuando no encuentra un dato.
         return None
     return user
->>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
