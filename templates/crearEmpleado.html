@@ -77,9 +77,16 @@
                 </div>
                 <br>
                 <!--Ajustar id para asignar el estilo-->
-                <center><div id="">
-                    <button type="submit" class="btn btn-secondary" id="btn_guardar" name="submitButton" value="AgregarInfo" >Agregar Información</button>
-                    <button type="button" class="btn btn-primary" id="btn_eliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Crear Nuevo </button>
+                <center><div>
+                    <form action="/">
+                        <button type="submit" class="btn btn-secondary" id="btn_guardar" nvalue="AgregarInfo" >Agregar Información</button>
+                    </form>
+                    <form action="/registroNuevoEmpleado">
+                        <button type="submit" class="btn btn-primary" id="btn_eliminar">Crear Nuevo </button>
+                    </form>
+                    <button type="submit" class="btn btn-primary" id="btn_imprimir" >
+                        <a href = "/adminEmplo">Regresar</a>
+                    </button>
                 </div></center>
 
             </form>

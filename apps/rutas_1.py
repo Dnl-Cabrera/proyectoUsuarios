@@ -4,11 +4,7 @@ from flask.helpers import make_response, url_for
 from flask import render_template, flash, request, session
 from flask.wrappers import Request
 from flask import request
-<<<<<<< HEAD
-from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,insertEmpleado
-=======
-from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,consultarAllUsuario,consultarAllPersona
->>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
+from db.db import consID,consUsuario,insertPersona,insertUsuario,consUsuarioPassword,consIdUser,updatePersona,updateUsuario,eliminarUsuario,eliminarPersona,consultarAllUsuario,consultarAllPersona,insertEmpleado
 from werkzeug.utils import redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -43,7 +39,9 @@ def funcionActividad():
     elif operacion=="adminUser":
         return redirect("/gestorUsuario")
     elif operacion=="allUsers":
-        return redirect("/allUsuarios")
+        return redirect("/allUsuarios/")
+    elif operacion=="adminEmplo":
+        return redirect("/adminEmplo")
     else:
         return redirect(404)
 
@@ -248,29 +246,10 @@ def operacionUsuario():
             flash("Usuario eliminado")
             return render_template('gestorUsuarios.html',class1=class1,class2=class2,class3=class3,mensaje=mensaje,permiso=session['permisos'])
     
-<<<<<<< HEAD
-    
 
-        
-    #return str(ide)+name+sexo+address+user+permiso+password #Obteniendo los datos del formulario consultado.
-    
-
-'''@app.route('/funcionEmpleado',methods=['POST', 'GET'])
-def funcionEmpleado():
-
-    operacion=request.form["admon"]
-
-    if operacion == 'registroEmpleado':
-        #redirect(url_for --> Revisar como se utiliza?
-        return render_template("crearEmpleado.html")
-    elif operacion=="desempeno":
-        return redirect(url_for("desempeno"))
-    elif operacion=="ListaEmpleados":
-        return redirect(url_for("/listaEmpleados"))'''
-=======
     #return str(ide)+name+sexo+address+user+permiso+password #Obteniendo los datos del formulario consultado.
 
-@app.route('/allUsuarios')
+@app.route('/allUsuarios/')
 def allUsuarios():
 
     if (session.get('usuario')):
@@ -281,6 +260,7 @@ def allUsuarios():
             mensaje="Consultar todos los usuarios"
             users=consultarAllUsuario()
             personas=consultarAllPersona()
+
             datos=[]
             for i in range(len(users)):
                 datos.append((personas[i][0],personas[i][1],users[i][1],users[0][3],personas[i][2],personas[i][3],))
@@ -296,4 +276,4 @@ def allUsuarios():
     else:
         flash('Inicie primero sesión','info')
         return redirect(url_for('index'))
->>>>>>> b8e66380954d003bc271327bdac5fd98dd186b1f
+

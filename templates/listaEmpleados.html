@@ -7,14 +7,13 @@
         table, th, td {
         border: 1px solid lightgray;
     }
-    
     </style>
 
-    <div class="container">
+    <div class="container" style="width:100%">
         <h2 style="padding: 1%;">Listado de Empleados</h2>
         <!--The .table class adds basic styling (light padding and only horizontal dividers) to a table:-->
         <p>Listado de empleados registrados activos en la plataforma</p>            
-        <table class="table">
+        <table class="table" id='listaEmpleados'>
         <thead>
             <tr>
             <th>Id</th>
@@ -56,18 +55,25 @@
     
     <!--</html>-->
     <center colspan="2"><div>
-            <form action="/consultaEmpleados">
-                <button type="submit" class="btn btn-primary" id="btn_regresar">Consultar</button>
-            </form>
-            <button type="submit" class="btn btn-primary" id="btn_imprimir" >
-                <a href = "/adminEmplo">Regresar</a>
-            </button>
-            <form action="/">
-                <button type="submit" class="btn btn-primary" id="btn_eliminar">Cerrar</button>
-            </form>
-            <form>
-                <button type="submit" class="btn btn-primary" id="btn_regresar">Exportar</button>
-            </form>
+        <table style="border: hidden">
+            <thead>
+                <tr>
+                    <th><form action="/consultaEmpleados">
+                        <button type="submit" class="btn btn-primary" id="btn_regresar">Consultar</button>
+                    </form></th>
+                    <br>
+                    <th>
+                        <form action="/adminEmplo">
+                            <button type="submit" class="btn btn-primary" id="btn_imprimir">Regresar</button>
+                        </form>
+                    </th>
+                    <br>
+                    <th><form action="/">
+                        <button type="submit" class="btn btn-primary" id="btn_eliminar">Cancelar</button>
+                    </form></th>
+                  </tr>  
+            </thead>
+        </table>
     </div></center>
 
 {% endblock %}
